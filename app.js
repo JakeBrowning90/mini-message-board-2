@@ -6,7 +6,7 @@ const path = require("node:path");
 // application-level middlewares, will always execute on every incoming requests
 
 //parses form payloads and sets it to the req.body
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 // app.use((req, res, next) => {
 //   // You can of course also create your own for your own use-case!
@@ -14,19 +14,41 @@ app.use(express.urlencoded({ extended: false }));
 //   next();
 // });
 
-const links = [
-  { href: "/", text: "Home" },
-  { href: "about", text: "About" },
-];
+// const links = [
+//   { href: "/", text: "Home" },
+//   { href: "new", text: "New" },
+// ];
 
 const users = ["Rose", "Cake", "Biff"];
 
+const messages = [
+  {
+    text: "Hi there!",
+    user: "Amando",
+    added: new Date(),
+  },
+  {
+    text: "Hello World!",
+    user: "Charles",
+    added: new Date(),
+  },
+];
+
 app.get("/", (req, res) => {
-  res.render("index", { links: links, users: users });
+  res.render("index", { title: "Mini Messageboard", messages: messages });
 });
 
-app.get("/about", (req, res) => {
-  res.render("about", { links: links });
+app.get("/new", (req, res) => {
+  res.render("form");
+});
+
+app.post("/new", (req, res) => {
+  messages.push({
+    text: req.body.messageInput,
+    user: req.body.authorInput,
+    added: new Date(),
+  });
+  res.redirect("/");
 });
 
 const assetsPath = path.join(__dirname, "public");
