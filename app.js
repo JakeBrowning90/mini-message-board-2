@@ -8,17 +8,6 @@ const path = require("node:path");
 //parses form payloads and sets it to the req.body
 app.use(express.urlencoded({ extended: true }));
 
-// app.use((req, res, next) => {
-//   // You can of course also create your own for your own use-case!
-//   // Just make sure to call `next`
-//   next();
-// });
-
-// const links = [
-//   { href: "/", text: "Home" },
-//   { href: "new", text: "New" },
-// ];
-
 const users = ["Rose", "Cake", "Biff"];
 
 const messages = [
