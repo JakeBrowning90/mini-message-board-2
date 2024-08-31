@@ -42,6 +42,11 @@ app.get("/new", (req, res) => {
   res.render("form");
 });
 
+app.get("/detail", (req, res) => {
+
+  res.render("detail", {message: "message details"});
+});
+
 app.post("/new", (req, res) => {
   messages.push({
     text: req.body.messageInput,
