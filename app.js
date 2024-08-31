@@ -42,9 +42,12 @@ app.get("/new", (req, res) => {
   res.render("form");
 });
 
-app.get("/detail", (req, res) => {
+// app.get("/detail", (req, res) => {
+//   res.render("detail", {message: "message details"});
+// });
 
-  res.render("detail", {message: "message details"});
+app.get("/detail/:messageIndex", (req, res) => {
+  res.render("detail", {message: messages[req.params.messageIndex]});
 });
 
 app.post("/new", (req, res) => {
