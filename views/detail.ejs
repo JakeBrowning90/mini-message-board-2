@@ -5,10 +5,15 @@
   </head>
   <body>
     <h1>Detail Page</h1>
-    <p><%= message.text %></p>
-    <p><%= message.user %></p>
-    <p><%= message.added %></p>
-
     <a href="/">Back</a>
-  </body> 
+    <!-- <%if (locals.message) {%> -->
+    <p><%= message.message %></p>
+    <p><%= message.author %></p>
+    <p><%= message.timestamp %></p>
+    <p><%= message.id %></p>
+    <!-- <% } %> -->
+    <form action="/<%= message.id %>/delete" method="POST">
+      <button type="submit">Delete</button>
+    </form>
+  </body>
 </html>

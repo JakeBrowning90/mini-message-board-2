@@ -14,17 +14,19 @@ async function getMessageForm(req, res) {
 
 async function postMessageForm(req, res) {
   const newMessage = req.body;
-//   console.log(newMessage);
-    await db.insertMessage(newMessage);
-    res.redirect("/");
+  //   console.log(newMessage);
+  await db.insertMessage(newMessage);
+  res.redirect("/");
 }
 
 async function getMessageDetail(req, res) {
-  res.send("Message detail");
+  const message = await db.getMessageByID(req.params.id);
+  res.render("detail", { message: message });
 }
 
 async function deleteMessage(req, res) {
-  res.send("Message delete");
+  await db.deleteMessageByID(req.params.id);
+    res.redirect("/");
 }
 
 module.exports = {

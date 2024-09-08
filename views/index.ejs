@@ -14,8 +14,8 @@
         <p><%= message.message %></p>
         <p><%= message.author %></p>
         <p><%= message.timestamp %></p>
-        <p><%= index %></p>
-
+        <p><%= message.id %></p>
+        <a href="/<%= message.id %>/detail"">Detail</a>
       </li>
       <% });%> <% }%>
     </ul>

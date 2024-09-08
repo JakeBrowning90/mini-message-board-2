@@ -15,14 +15,26 @@ async function getAllMessages() {
 // }
 
 async function insertMessage(message) {
-  await pool.query("INSERT INTO messages (message, author) VALUES ($1, $2)", [message.message, message.author]);
+  await pool.query("INSERT INTO messages (message, author) VALUES ($1, $2)", [
+    message.message,
+    message.author,
+  ]);
 }
 
-// async function deleteMessage(messageid) {
-//   await pool.query("DELETE FROM messages WHERE ");
-// }
+async function getMessageByID(id) {
+  const { rows } = await pool.query("SELECT * FROM messages WHERE id = ($1)", [
+    id,
+  ]);
+  return rows[0];
+}
+
+async function deleteMessageByID(id) {
+  await pool.query("DELETE FROM messages WHERE id = ($1)", [id]);
+}
 
 module.exports = {
   getAllMessages,
   insertMessage,
+  getMessageByID,
+  deleteMessageByID,
 };

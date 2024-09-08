@@ -13,10 +13,10 @@ router.get("/new", messageController.getMessageForm);
 router.post("/new", messageController.postMessageForm);
 
 // GET detail for single message by ID
-router.get("/:id", messageController.getMessageDetail);
+router.get("/:id/detail", messageController.getMessageDetail);
 
 // DELETE single message by ID
-router.delete("/:id", messageController.deleteMessage);
+router.post("/:id/delete", messageController.deleteMessage);
 
 module.exports = router;
 
