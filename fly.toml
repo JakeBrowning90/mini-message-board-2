@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for mini-message-board-2-silent-rain-555 on 2024-08-31T15:46:59-04:00
+# fly.toml app configuration file generated for mini-message-board-2-frosty-shadow-208 on 2024-09-09T12:41:35-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'mini-message-board-2-silent-rain-555'
+app = 'mini-message-board-2-frosty-shadow-208'
 primary_region = 'bos'
 
 [build]

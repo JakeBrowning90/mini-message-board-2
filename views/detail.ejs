@@ -6,13 +6,11 @@
   <body>
     <h1>Detail Page</h1>
     <a href="/">Back</a>
-    <!-- <%if (locals.message) {%> -->
-    <p><%= message.message %></p>
-    <p><%= message.author %></p>
-    <p><%= message.timestamp %></p>
-    <p><%= message.id %></p>
-    <!-- <% } %> -->
-    <form action="/<%= message.id %>/delete" method="POST">
+    <p><%= joke.setup %></p>
+    <p><%= joke.punchline %></p>
+    <p><%= joke.poster %></p>
+    <p><%= joke.timestamp %></p>
+    <form action="/<%= joke.id %>/delete" method="POST">
       <button type="submit">Delete</button>
     </form>
   </body>

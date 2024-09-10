@@ -9,13 +9,12 @@
       <span>Write New</span>
     </a>
     <ul>
-      <%if (locals.messages) {%> <% messages.forEach((message, index) => { %>
+      <%if (locals.jokes) {%> <% jokes.forEach((joke) => { %>
       <li>
-        <p><%= message.message %></p>
-        <p><%= message.author %></p>
-        <p><%= message.timestamp %></p>
-        <p><%= message.id %></p>
-        <a href="/<%= message.id %>/detail"">Detail</a>
+        <p><%= joke.setup %></p>
+        <p>Shared by <%= joke.poster %></p>
+        <p>Posted <%= joke.timestamp %></p>
+        <a href="/<%= joke.id %>/detail"">Detail</a>
       </li>
       <% });%> <% }%>
     </ul>

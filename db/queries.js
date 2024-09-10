@@ -1,40 +1,31 @@
 const pool = require("./pool");
 
-async function getAllMessages() {
-  const { rows } = await pool.query("SELECT * FROM messages");
+async function getAllJokes() {
+  const { rows } = await pool.query("SELECT * FROM jokes");
   return rows;
 }
 
-// async function getSearchedUsernames(query) {
-//   console.log(query);
-//   const { rows } = await pool.query(
-//     "SELECT * FROM usernames WHERE LOWER(username) LIKE LOWER('%' || ($1) || '%')",
-//     [query]
-//   );
-//   return rows;
-// }
-
-async function insertMessage(message) {
-  await pool.query("INSERT INTO messages (message, author) VALUES ($1, $2)", [
-    message.message,
-    message.author,
-  ]);
+async function insertJoke(joke) {
+  await pool.query(
+    "INSERT INTO jokes (setup, punchline, poster) VALUES ($1, $2, $3)",
+    [joke.setup, joke.punchline, joke.poster]
+  );
 }
 
-async function getMessageByID(id) {
-  const { rows } = await pool.query("SELECT * FROM messages WHERE id = ($1)", [
+async function getJokeByID(id) {
+  const { rows } = await pool.query("SELECT * FROM jokes WHERE id = ($1)", [
     id,
   ]);
   return rows[0];
 }
 
-async function deleteMessageByID(id) {
-  await pool.query("DELETE FROM messages WHERE id = ($1)", [id]);
+async function deleteJokeByID(id) {
+  await pool.query("DELETE FROM jokes WHERE id = ($1)", [id]);
 }
 
 module.exports = {
-  getAllMessages,
-  insertMessage,
-  getMessageByID,
-  deleteMessageByID,
+  getAllJokes,
+  insertJoke,
+  getJokeByID,
+  deleteJokeByID,
 };
