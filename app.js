@@ -2,7 +2,6 @@ require("dotenv").config();
 console.log(process.env.CONNECTION_STRING);
 
 const express = require("express");
-// const messagesRouter = require("./routes/messageRoutes");
 const jokesRouter = require("./routes/jokeRoutes");
 
 const app = express();

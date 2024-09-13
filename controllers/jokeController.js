@@ -51,6 +51,10 @@ exports.getJokeDetail = asyncHandler(async (req, res) => {
 });
 
 exports.deleteJoke = asyncHandler(async (req, res) => {
-  await db.deleteJokeByID(req.params.id);
-  res.redirect("/");
+  if (req.body.password != process.env.DELETE) {
+    res.redirect("back");
+  } else {
+    await db.deleteJokeByID(req.params.id);
+    res.redirect("/");
+  }
 });
