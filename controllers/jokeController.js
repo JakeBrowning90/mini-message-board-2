@@ -10,74 +10,47 @@ const validateForm = [
   body("punchline")
     .trim()
     .isLength({ min: 1, max: 255 })
-    .withMessage(`Setup must contain between 1 and 255 characters.`),
+    .withMessage(`Punchline must contain between 1 and 255 characters.`),
   body("poster")
     .trim()
     .isLength({ max: 30 })
     .withMessage(`Name cannot exceed 30 characters.`),
 ];
 
-// exports.getJokes = (req, res) => {
-//   const jokes = await db.getAllJokes();
-//   res.render("index", { jokes: jokes });
-// };
-
-// exports.getJokes = (req, res) => {
-
-// };
-
-// exports.getJokes = (req, res) => {
-
-// };
-
-// exports.getJokes = (req, res) => {
-
-// };
-
-// exports.getJokes = (req, res) => {
-
-// };
-
-const getJokes = asyncHandler(async (req, res) => {
+exports.getJokes = asyncHandler(async (req, res) => {
   const jokes = await db.getAllJokes();
   res.render("index", { jokes: jokes });
 });
 
-async function getJokeForm(req, res) {
+exports.getJokeForm = asyncHandler(async (req, res) => {
   res.render("form");
-}
-
-const postJokeForm = asyncHandler(async (req, res) => {
-  const errors = validationResult(req);
-  console.log(errors);
-  if (!errors.isEmpty()) {
-    return res.status(400).render("form", {
-      errors: errors.array(),
-    });
-  }
-
-  const newJoke = req.body;
-  if (!newJoke.poster) {
-    newJoke.poster = "Anonymous";
-  }
-  await db.insertJoke(newJoke);
-  res.redirect("/");
 });
 
-async function getJokeDetail(req, res) {
+exports.postJokeForm = [
+  validateForm,
+  asyncHandler(async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).render("form", {
+        errors: errors.array(),
+      });
+    }
+
+    const newJoke = req.body;
+    if (!newJoke.poster) {
+      newJoke.poster = "Anonymous";
+    }
+    await db.insertJoke(newJoke);
+    res.redirect("/");
+  }),
+];
+
+exports.getJokeDetail = asyncHandler(async (req, res) => {
   const joke = await db.getJokeByID(req.params.id);
   res.render("detail", { joke: joke });
-}
+});
 
-async function deleteJoke(req, res) {
+exports.deleteJoke = asyncHandler(async (req, res) => {
   await db.deleteJokeByID(req.params.id);
   res.redirect("/");
-}
-
-module.exports = {
-  getJokes,
-  getJokeForm,
-  postJokeForm,
-  getJokeDetail,
-  deleteJoke,
-};
+});

@@ -1,7 +1,7 @@
 const express = require("express");
-const jokeController = require("../controllers/jokeController");
-
 const router = express.Router();
+
+const jokeController = require("../controllers/jokeController");
 
 // GET all
 router.get("/", jokeController.getJokes);
@@ -19,4 +19,3 @@ router.get("/:id/detail", jokeController.getJokeDetail);
 router.post("/:id/delete", jokeController.deleteJoke);
 
 module.exports = router;
-
