@@ -1,8 +1,6 @@
 <html>
-  <head>
-    <title>New</title>
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
+  <%- include('partials/head', {title: "Jokes - New"}) %>
+
   <body>
     <%- include('partials/errors') %>
     <form action="/new" method="POST">
@@ -22,5 +20,6 @@
       <button type="submit">Submit</button>
     </form>
     <a href="/">Back</a>
+    <%- include('partials/footer') %>
   </body>
 </html>

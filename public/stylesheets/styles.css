@@ -1,0 +1,16 @@
+html {
+  height: 100%;
+  background-color: rgb(252, 202, 175);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(255, 255, 219);
+  color: black;
+  max-width: 50%;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+}
