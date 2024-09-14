@@ -2,20 +2,28 @@
   <%- include('partials/head', {title: "Jokes - Home"}) %>
 
   <body>
-    <h1>Homepage</h1>
-    <a href="/new">
-      <span>Write New</span>
-    </a>
-    <ul>
-      <%if (locals.jokes) {%> <% jokes.forEach((joke) => { %>
-      <li>
-        <p><%= joke.setup %></p>
-        <p>Shared by <%= joke.poster %></p>
-        <p>Posted <%= joke.timestamp %></p>
-        <a href="/<%= joke.id %>/detail"">Detail</a>
-      </li>
-      <% });%> <% }%>
-    </ul>
+    <header>
+      <h1>Joke Book</h1>
+
+    </header>
+    <main>
+      <a href="/new">
+        <span>Write New</span>
+      </a>
+      <ul>
+        <%if (locals.jokes) {%> <% jokes.forEach((joke) => { %>
+        <li class="jokeBody">
+          <a href="/<%= joke.id %>/detail"">
+            <h2>
+              <%= joke.setup %>
+            </h2>
+           
+          </a>          
+          <p>Shared by <%= joke.poster %> on <%= joke.timestamp.toLocaleString() %></p>
+        </li>
+        <% });%> <% }%>
+      </ul>
+    </main>
     <%- include('partials/footer') %>
   </body>
 </html>

@@ -1,16 +1,97 @@
-html {
+:root {
+  --palette-orange: #ff9f1c;
+  --palette-blue: #c7eae4;
+  --palette-green: #a7e8bd;
+  --palette-dark-blue: #afbcff;
+  --palette-red: #ff5154;
+}
+
+html,
+body {
   height: 100%;
-  background-color: rgb(252, 202, 175);
   margin: 0;
-  padding: 0;
+}
+
+html {
+  /* background-color: rgb(252, 202, 175); */
   box-sizing: border-box;
 }
 
-body {
-  background-color: rgb(255, 255, 219);
-  color: black;
-  max-width: 50%;
-  margin: 10px auto;
+body,
+main,
+form,
+ul,
+.jokeBody {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+
+body,
+header,
+footer,
+main,
+form,
+.jokeBody {
+  padding: 10px;
+}
+
+body {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  box-sizing: border-box;
+  max-height: 100%;
+  max-width: 800px;
+  background-color: var(--palette-green);
+  color: black;
+  margin: auto;
+  justify-content: space-between;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+}
+
+header,
+footer {
+  background-color: var(--palette-orange);
+}
+
+header {
+  margin-bottom: 10px;
+}
+
+main {
+  height: 100%;
+  overflow: auto;
+  background-color: var(--palette-blue);
+}
+
+ul {
+  list-style: none;
+}
+
+.jokeBody {
+  background-color: var(--palette-dark-blue);
+}
+
+.newForm {
+  background-color: var(--palette-dark-blue);
+}
+
+.deleteForm {
+  background-color: var(--palette-red);
+  width: 50%;
+  margin: 0 auto 0 auto;
+}
+
+footer {
+  margin-top: 10px;
 }

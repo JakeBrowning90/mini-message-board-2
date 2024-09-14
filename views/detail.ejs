@@ -1,19 +1,25 @@
 <html>
   <%- include('partials/head', {title: "Jokes - Detail"}) %>
-  
+
   <body>
-    <h1>Detail Page</h1>
-    <a href="/">Back</a>
-    <p><%= joke.setup %></p>
-    <p><%= joke.punchline %></p>
-    <p><%= joke.poster %></p>
-    <p><%= joke.timestamp %></p>
-    <form action="/<%= joke.id %>/delete" method="POST">
-      <label for="password"
-      >Password*:
-      <input type="password" name="password" id="password" />
-      <button type="submit">Delete</button>
-    </form>
+    <header>
+      <h1>Detail Page</h1>
+    </header>
+    <main>
+      <a href="/">Back</a>
+      <div class="jokeBody">
+        <h2><%= joke.setup %></h2>
+        <h2><%= joke.punchline %></h2>
+        <p>Shared by <%= joke.poster %> on <%= joke.timestamp.toLocaleString() %></p>
+      </div>
+    
+      <form action="/<%= joke.id %>/delete" method="POST" class="deleteForm">
+        <h3>Delete this joke?</h3>
+        <label for="password">Password*:</label>
+        <input type="password" name="password" id="password" />
+        <button type="submit">Delete</button>
+      </form>
+    </main>
     <%- include('partials/footer') %>
   </body>
 </html>

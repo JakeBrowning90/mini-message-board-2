@@ -2,24 +2,26 @@
   <%- include('partials/head', {title: "Jokes - New"}) %>
 
   <body>
-    <%- include('partials/errors') %>
-    <form action="/new" method="POST">
+    <header>
       <h1>New Joke</h1>
-      <label for="setup"
-        >Setup*:
+    
+    </header>
+    <main>
+      <a href="/">Back</a>
+      <%- include('partials/errors') %>
+      <form action="/new" method="POST" class="newForm">
+        <label for="setup">Setup*: </label>
         <input type="text" name="setup" id="setup" />
-      </label>
-      <label for="punchline"
-      >Punchline*:
-      <input type="text" name="punchline" id="punchline" />
-    </label>
-      <label for="poster"
-        >Your name (optional):
+
+        <label for="punchline">Punchline*: </label>
+        <input type="text" name="punchline" id="punchline" />
+
+        <label for="poster">Your name (optional): </label>
         <input type="text" name="poster" id="poster" />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
-    <a href="/">Back</a>
+
+        <button type="submit">Submit</button>
+      </form>
+    </main>
     <%- include('partials/footer') %>
   </body>
 </html>
