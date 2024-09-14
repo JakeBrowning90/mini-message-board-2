@@ -18,16 +18,12 @@ VALUES
 `;
 
 async function main() {
-  console.log("Seeding...");
-  console.log(process.env.CONNECTION_STRING);
-
   const client = new Client({
     connectionString: process.env.CONNECTION_STRING,
   });
   await client.connect();
   await client.query(SQL);
   await client.end();
-  console.log("done");
 }
 
 main();
